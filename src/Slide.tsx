@@ -1,7 +1,12 @@
 import {useCurrentFrame, interpolate, useVideoConfig, Img, staticFile, Sequence} from 'remotion';
 
-export function CircleTransitionOut(){
-//export const CircleTransitionOut = () => { 
+
+//--------------
+// still working on this one
+//--------------
+
+
+export const SlideToRight = () => { 
   const frame = useCurrentFrame();
   const {width: w} = useVideoConfig();
 
@@ -12,7 +17,7 @@ export function CircleTransitionOut(){
 
   const Progress = interpolate(
     frame,
-    [contentADuration - transitionTime, contentADuration],
+    [(contentADuration - transitionTime), contentADuration],
     [0, w]
   )
   
@@ -25,7 +30,7 @@ export function CircleTransitionOut(){
     src = {staticFile("office2.jpg")} // for the second image/gif
   />
   
-  const circleShape = "circle(" + Progress + "px)"
+  const rectangleShape = "inset(0px 0px 0px" + Progress + "px)" //doesn't work for some reason, gotta try something else 
 
   return (
     <>
@@ -36,7 +41,9 @@ export function CircleTransitionOut(){
       </Sequence>
       <Sequence from={(contentADuration - transitionTime)} durationInFrames={contentBDuration} >
         <div style={{
-          clipPath: circleShape
+          
+          
+          clipPath: rectangleShape
         }}>
           {contentB}
         </div>

@@ -1,13 +1,14 @@
 import {Composition} from 'remotion';
-import {MyComposition} from './Composition';
+import {CircleTransitionOut, } from './Composition';
+//import { SlideToRight } from './Slide';
 
 export const RemotionRoot: React.FC = () => {
 	return (
 		<>
 			<Composition
-				id="MyComp"
-				component={MyComposition}
-				durationInFrames={60}
+				id="CircleTransitionOut"
+				component={CircleTransitionOut}
+				durationInFrames={100}
 				fps={30}
 				width={1280}
 				height={720}
